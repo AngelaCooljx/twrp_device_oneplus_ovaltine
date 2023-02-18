@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/xiaomi/cupid
+LOCAL_PATH := device/oneplus/ovaltine
 
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
@@ -47,6 +47,17 @@ SHIPPING_API_LEVEL := 31
 # Boot/kernel Console enabled
 TARGET_CONSOLE_ENABLED := true
 
+# Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-impl-qti \
+    android.hardware.boot@1.2-impl-qti.recovery \
+    android.hardware.boot@1.2-service \
+    bootctrl.oneplus_sm8475 \
+    bootctrl.oneplus_sm8475.recovery
+
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
+
 # Build
 BUILD_BROKEN_DUP_RULES := true
 RELAX_USES_LIBRARY_CHECK := true
@@ -63,13 +74,20 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.0-impl-mock \
 	android.hardware.fastboot@1.0-impl-mock.recovery \
-	fastbootd
+	fastbootd \
+    resetprop
 
 # f2fs utilities
 PRODUCT_PACKAGES += \
     sg_write_buffer \
     f2fs_io \
     check_f2fs
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
 
 # Platform
 TARGET_BOARD_PLATFORM := taro
@@ -86,3 +104,10 @@ TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 # Userdata checkpoint
 PRODUCT_PACKAGES += \
     checkpoint_gc
+
+# Vibrator
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.vibrator-V2-ndk_platform.so
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V2-ndk_platform.so \

@@ -36,6 +36,12 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     start set_permissive
 
+on post-fs
+    start boot-hal-1-2
+
+on boot
+    start health-hal-2-1
+
 service set_permissive /system/bin/set_permissive.sh
     user root
     group root

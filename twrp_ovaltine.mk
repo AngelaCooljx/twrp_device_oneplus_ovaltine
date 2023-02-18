@@ -11,14 +11,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common twrp stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Inherit from cupid device
-$(call inherit-product, device/xiaomi/cupid/device.mk)
+# Inherit from ovaltine device
+$(call inherit-product, device/oneplus/ovaltine/device.mk)
 
-PRODUCT_DEVICE := cupid
-PRODUCT_NAME := twrp_cupid
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi 12
-PRODUCT_MANUFACTURER := xiaomi
-
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
+PRODUCT_DEVICE := ovaltine
+PRODUCT_NAME := twrp_ovaltine
+PRODUCT_BRAND := oneplus
+PRODUCT_MODEL := ovaltine
+PRODUCT_MANUFACTURER := oneplus

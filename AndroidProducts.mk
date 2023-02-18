@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_cupid.mk
+    $(LOCAL_DIR)/twrp_ovaltine.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_cupid-user \
-    twrp_cupid-userdebug \
-    twrp_cupid-eng
+    twrp_ovaltine-user \
+    twrp_ovaltine-userdebug \
+    twrp_ovaltine-eng
