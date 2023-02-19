@@ -42,9 +42,23 @@ on post-fs
 on boot
     start health-hal-2-1
 
+on property:sys.usb.config=fastboot
+    start fastbootd
+
+on property:sys.usb.config=none && property:sys.usb.configfs=0
+    stop adbd
+    stop fastbootd
+    write /sys/class/android_usb/android0/enable 0
+    setprop sys.usb.state ${sys.usb.config}
+
 service set_permissive /system/bin/set_permissive.sh
     user root
     group root
     disabled
     oneshot 
+    seclabel u:r:recovery:s0
+
+service fastbootd /system/bin/fastbootd
+    disabled
+    group system
     seclabel u:r:recovery:s0

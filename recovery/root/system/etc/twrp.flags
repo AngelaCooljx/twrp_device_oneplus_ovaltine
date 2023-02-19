@@ -1,7 +1,4 @@
 # mount point   fstype  device                                          device2             flags
-# Logical partitions
-/system_ext     ext4    system_ext                                                          flags=display=System_ext
-
 # Userdata/Metadata partitions
 /metadata       ext4    /dev/block/by-name/metadata                                         flags=display=Metadata
 
